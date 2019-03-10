@@ -1,0 +1,12 @@
+Source: ros-crystal-rcl-logging-log4cxx
+Section: misc
+Priority: extra
+Maintainer: Amazon B9 <amazon-b9-ros@amazon.com>
+Build-Depends: debhelper (>= 9.0.0), liblog4cxx-dev, python3-empy, ros-crystal-ament-cmake-gmock, ros-crystal-ament-cmake-gtest, ros-crystal-ament-cmake-pytest, ros-crystal-ament-cmake-ros, ros-crystal-ament-lint-auto, ros-crystal-ament-lint-common, ros-crystal-launch-testing, ros-crystal-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-crystal-rcl-logging-log4cxx
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, liblog4cxx-dev, ros-crystal-ros-workspace
+Description: C API providing common interface to a shared library wrapping 3rd party loggers.
