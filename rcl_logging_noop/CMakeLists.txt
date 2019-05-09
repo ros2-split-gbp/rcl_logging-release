@@ -12,6 +12,7 @@ if(NOT CMAKE_CXX_STANDARD)
 endif()
 
 find_package(ament_cmake_ros REQUIRED)
+find_package(rcutils REQUIRED)
 
 include_directories(${ament_INCLUDE_DIRS})
 
@@ -20,9 +21,8 @@ if(NOT WIN32)
 endif()
 
 set(${PROJECT_NAME}_sources
-    src/rcl_logging_noop/rcl_logging_noop.cpp
+  src/rcl_logging_noop/rcl_logging_noop.cpp
 )
-#set_source_files_properties(${${PROJECT_NAME}_sources} PROPERTIES language "CXX")
 
 if(NOT WIN32)
   add_library(${PROJECT_NAME} ${${PROJECT_NAME}_sources})
@@ -34,7 +34,8 @@ else()
 endif()
 
 ament_target_dependencies(${PROJECT_NAME}
-    ${dependencies}
+  ${dependencies}
+  rcutils
 )
 
 
