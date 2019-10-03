@@ -2,6 +2,9 @@
 Changelog for package rcl_logging_noop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.3.1 (2019-10-03)
+------------------
+
 0.3.0 (2019-09-26)
 ------------------
 * remove unused 'dependencies' CMake variable (`#16 <https://github.com/ros2/rcl_logging/issues/16>`_)

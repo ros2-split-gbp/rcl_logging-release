@@ -2,6 +2,9 @@
 Changelog for package rcl_logging_log4cxx
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.3.1 (2019-10-03)
+------------------
+
 0.3.0 (2019-09-26)
 ------------------
 * fix package.xml schema violations (`#15 <https://github.com/ros2/rcl_logging/issues/15>`_)
