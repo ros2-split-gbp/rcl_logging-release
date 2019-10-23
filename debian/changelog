@@ -1,0 +1,46 @@
+ros-eloquent-rcl-logging-spdlog (0.3.3-1bionic) bionic; urgency=high
+
+  * Fix Clang warning about possible uninitialized variable (#21 <https://github.com/ros2/rcl_logging/issues/21>)
+  * Contributors: Jacob Perron
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Wed, 23 Oct 2019 00:00:00 -0000
+
+ros-eloquent-rcl-logging-spdlog (0.3.2-1bionic) bionic; urgency=high
+
+  * spdlog is a header-only library, so the exported dep isn't needed. (#19 <https://github.com/ros2/rcl_logging/issues/19>)
+  * Contributors: Chris Lalancette
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Mon, 07 Oct 2019 00:00:00 -0000
+
+ros-eloquent-rcl-logging-spdlog (0.3.1-1bionic) bionic; urgency=high
+
+  * Implement a backend logger using spdlog. (#17 <https://github.com/ros2/rcl_logging/issues/17>)
+  * Contributors: Chris Lalancette
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Thu, 03 Oct 2019 00:00:00 -0000
+
+ros-eloquent-rcl-logging-spdlog (0.3.0-1bionic) bionic; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Thu, 26 Sep 2019 00:00:00 -0000
+
+ros-eloquent-rcl-logging-spdlog (0.2.1-1bionic) bionic; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Wed, 08 May 2019 00:00:00 -0000
+
+ros-eloquent-rcl-logging-spdlog (0.2.0-1bionic) bionic; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Sat, 09 Mar 2019 00:00:00 -0000
+
+ros-eloquent-rcl-logging-spdlog (0.1.0-1bionic) bionic; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Fri, 07 Dec 2018 00:00:00 -0000
+
+
