@@ -1,0 +1,67 @@
+ros-rolling-rcl-logging-spdlog (1.0.0-2focal) focal; urgency=high
+
+  * Add some preliminary functional tests (#36 <https://github.com/ros2/rcl_logging/issues/36>)
+  * warn about unused return value for set_logger_level (#38 <https://github.com/ros2/rcl_logging/issues/38>)
+  * Added features to rcl_logging_spdlog (#35 <https://github.com/ros2/rcl_logging/issues/35>)
+  * Added public API documentation for log4cxx and spdlog (#32 <https://github.com/ros2/rcl_logging/issues/32>)
+  * Current state Quality Declaration, Contributing and Readme files (#29 <https://github.com/ros2/rcl_logging/issues/29>)
+  * Contributors: Alejandro Hernández Cordero, Dirk Thomas, Jorge Perez, Scott K Logan
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Tue, 26 May 2020 04:00:00 -0000
+
+ros-rolling-rcl-logging-spdlog (0.4.0-2focal) focal; urgency=high
+
+  * Export targets in addition to include directories / libraries (#31 <https://github.com/ros2/rcl_logging/issues/31>)
+  * Make spdlog an exec_depend (#27 <https://github.com/ros2/rcl_logging/issues/27>)
+  * Code style only: wrap after open parenthesis if not in one line (#24 <https://github.com/ros2/rcl_logging/issues/24>)
+  * Bypass spdlog singleton registry (#23 <https://github.com/ros2/rcl_logging/issues/23>)
+  * Contributors: Chris Lalancette, Dirk Thomas, Ivan Santiago Paunovic
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Fri, 24 Apr 2020 04:00:00 -0000
+
+ros-rolling-rcl-logging-spdlog (0.3.3-2focal) focal; urgency=high
+
+  * Fix Clang warning about possible uninitialized variable (#21 <https://github.com/ros2/rcl_logging/issues/21>)
+  * Contributors: Jacob Perron
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Wed, 23 Oct 2019 04:00:00 -0000
+
+ros-rolling-rcl-logging-spdlog (0.3.2-2focal) focal; urgency=high
+
+  * spdlog is a header-only library, so the exported dep isn't needed. (#19 <https://github.com/ros2/rcl_logging/issues/19>)
+  * Contributors: Chris Lalancette
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Mon, 07 Oct 2019 04:00:00 -0000
+
+ros-rolling-rcl-logging-spdlog (0.3.1-2focal) focal; urgency=high
+
+  * Implement a backend logger using spdlog. (#17 <https://github.com/ros2/rcl_logging/issues/17>)
+  * Contributors: Chris Lalancette
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Thu, 03 Oct 2019 04:00:00 -0000
+
+ros-rolling-rcl-logging-spdlog (0.3.0-2focal) focal; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Thu, 26 Sep 2019 04:00:00 -0000
+
+ros-rolling-rcl-logging-spdlog (0.2.1-2focal) focal; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Wed, 08 May 2019 04:00:00 -0000
+
+ros-rolling-rcl-logging-spdlog (0.2.0-2focal) focal; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Sat, 09 Mar 2019 05:00:00 -0000
+
+ros-rolling-rcl-logging-spdlog (0.1.0-2focal) focal; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Fri, 07 Dec 2018 05:00:00 -0000
+
+
