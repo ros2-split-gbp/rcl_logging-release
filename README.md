@@ -1,3 +1,30 @@
+## rcl_logging (rolling) - 2.0.0-1
+
+The packages in the `rcl_logging` repository were released into the `rolling` distro by running `/usr/bin/bloom-release --rosdistro rolling --track rolling rcl_logging` on `Thu, 18 Jun 2020 16:20:48 -0000`
+
+These packages were released:
+- `rcl_logging_interface`
+- `rcl_logging_log4cxx`
+- `rcl_logging_noop`
+- `rcl_logging_spdlog`
+
+Version of package(s) in repository `rcl_logging`:
+
+- upstream repository: https://github.com/ros2/rcl_logging.git
+- release repository: https://github.com/ros2-gbp/rcl_logging-release.git
+- rosdistro version: `1.0.0-2`
+- old version: `1.0.0-2`
+- new version: `2.0.0-1`
+
+Versions of tools used:
+
+- bloom version: `0.9.7`
+- catkin_pkg version: `0.4.20`
+- rosdep version: `0.19.0`
+- rosdistro version: `0.8.1`
+- vcstools version: `0.1.42`
+
+
 ## rcl_logging (foxy) - 1.0.0-1
 
 The packages in the `rcl_logging` repository were released into the `foxy` distro by running `/usr/bin/bloom-release --track foxy --rosdistro foxy rcl_logging` on `Tue, 26 May 2020 19:29:37 -0000`
