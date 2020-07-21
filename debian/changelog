@@ -1,0 +1,14 @@
+ros-rolling-rcl-logging-interface (2.0.1-1focal) focal; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Tue, 21 Jul 2020 00:00:00 -0000
+
+ros-rolling-rcl-logging-interface (2.0.0-1focal) focal; urgency=high
+
+  * Add new package with rcl logging interface (#41 <https://github.com/ros2/rcl_logging/issues/41>)
+  * Contributors: Chris Lalancette
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Thu, 18 Jun 2020 00:00:00 -0000
+
+
