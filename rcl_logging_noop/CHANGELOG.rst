@@ -2,15 +2,8 @@
 Changelog for package rcl_logging_noop
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-2.0.1 (2020-07-21)
+1.0.1 (2020-07-21)
 ------------------
-* Remove unused pytest dependency. (`#43 <https://github.com/ros2/rcl_logging/issues/43>`_)
-* Contributors: Chris Lalancette
-
-2.0.0 (2020-06-18)
-------------------
-* Use new package with rcl logging interface (`#41 <https://github.com/ros2/rcl_logging/issues/41>`_)
-* Contributors: Chris Lalancette
 
 1.0.0 (2020-05-26)
 ------------------

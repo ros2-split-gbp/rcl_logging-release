@@ -2,7 +2,7 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>rcl_logging_spdlog</name>
-  <version>2.0.1</version>
+  <version>1.0.1</version>
   <description>Implementation of rcl_logging API for an spdlog backend.</description>
   <maintainer email="clalancette@openrobotics.org">Chris Lalancette</maintainer>
   <license>Apache License 2.0</license>
@@ -13,7 +13,6 @@
   <build_depend>spdlog_vendor</build_depend>
   <build_depend>spdlog</build_depend>
 
-  <depend>rcl_logging_interface</depend>
   <depend>rcutils</depend>
 
   <exec_depend>spdlog_vendor</exec_depend>
@@ -21,7 +20,6 @@
 
   <test_depend>ament_lint_auto</test_depend>
   <test_depend>ament_lint_common</test_depend>
-  <test_depend>rcpputils</test_depend>
 
   <member_of_group>rcl_logging_packages</member_of_group>
 
