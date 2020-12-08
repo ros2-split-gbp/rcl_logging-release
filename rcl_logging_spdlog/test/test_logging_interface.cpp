@@ -18,6 +18,7 @@
 #include <rcutils/env.h>
 #include <rcutils/error_handling.h>
 #include <rcutils/logging.h>
+#include <rcutils/testing/fault_injection.h>
 
 #include <limits.h>
 #include <fstream>
@@ -26,8 +27,6 @@
 #include "fixtures.hpp"
 #include "gtest/gtest.h"
 #include "rcl_logging_interface/rcl_logging_interface.h"
-
-namespace fs = rcpputils::fs;
 
 const int logger_levels[] =
 {
@@ -62,27 +61,6 @@ private:
   const std::string value_;
 };
 
-// TODO(cottsay): Remove when ros2/rcpputils#63 is resolved
-static fs::path current_path()
-{
-#ifdef _WIN32
-#ifdef UNICODE
-#error "rcpputils::fs does not support Unicode paths"
-#endif
-  char cwd[MAX_PATH];
-  if (nullptr == _getcwd(cwd, MAX_PATH)) {
-#else
-  char cwd[PATH_MAX];
-  if (nullptr == getcwd(cwd, PATH_MAX)) {
-#endif
-    std::error_code ec{errno, std::system_category()};
-    errno = 0;
-    throw std::system_error{ec, "cannot get current working directory"};
-  }
-
-  return fs::path(cwd);
-}
-
 TEST_F(LoggingTest, init_invalid)
 {
   // Config files are not supported by spdlog
@@ -106,25 +84,25 @@ TEST_F(LoggingTest, init_failure)
   rcutils_reset_error();
 
   // Force failure to create directories
-  fs::path fake_home = current_path() / "fake_home_dir";
-  ASSERT_TRUE(fs::create_directories(fake_home));
+  rcpputils::fs::path fake_home = rcpputils::fs::current_path() / "fake_home_dir";
+  ASSERT_TRUE(rcpputils::fs::create_directories(fake_home));
   ASSERT_EQ(true, rcutils_set_env("HOME", fake_home.string().c_str()));
 
   // ...fail to create .ros dir
-  fs::path ros_dir = fake_home / ".ros";
+  rcpputils::fs::path ros_dir = fake_home / ".ros";
   std::fstream(ros_dir.string(), std::ios_base::out).close();
   EXPECT_EQ(RCL_LOGGING_RET_ERROR, rcl_logging_external_initialize(nullptr, allocator));
-  ASSERT_TRUE(fs::remove(ros_dir));
+  ASSERT_TRUE(rcpputils::fs::remove(ros_dir));
 
   // ...fail to create .ros/log dir
-  ASSERT_TRUE(fs::create_directories(ros_dir));
-  fs::path ros_log_dir = ros_dir / "log";
+  ASSERT_TRUE(rcpputils::fs::create_directories(ros_dir));
+  rcpputils::fs::path ros_log_dir = ros_dir / "log";
   std::fstream(ros_log_dir.string(), std::ios_base::out).close();
   EXPECT_EQ(RCL_LOGGING_RET_ERROR, rcl_logging_external_initialize(nullptr, allocator));
-  ASSERT_TRUE(fs::remove(ros_log_dir));
-  ASSERT_TRUE(fs::remove(ros_dir));
+  ASSERT_TRUE(rcpputils::fs::remove(ros_log_dir));
+  ASSERT_TRUE(rcpputils::fs::remove(ros_dir));
 
-  ASSERT_TRUE(fs::remove(fake_home));
+  ASSERT_TRUE(rcpputils::fs::remove(fake_home));
 }
 
 TEST_F(LoggingTest, full_cycle)
@@ -161,4 +139,17 @@ TEST_F(LoggingTest, full_cycle)
   EXPECT_EQ(
     expected_log.str(),
     actual_log.str()) << "Unexpected log contents in " << log_file_path;
+}
+
+TEST_F(LoggingTest, init_fini_maybe_fail_test)
+{
+  RCUTILS_FAULT_INJECTION_TEST(
+  {
+    if (RCL_LOGGING_RET_OK == rcl_logging_external_initialize(nullptr, allocator)) {
+      EXPECT_EQ(RCL_LOGGING_RET_OK, rcl_logging_external_shutdown());
+    } else {
+      EXPECT_TRUE(rcutils_error_is_set());
+      rcutils_reset_error();
+    }
+  });
 }
