@@ -2,13 +2,35 @@
 Changelog for package rcl_logging_spdlog
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1.0.1 (2020-07-21)
+2.1.0 (2020-12-08)
 ------------------
-* Include rcutils/allocator.h in logging_interface.h (`#47 <https://github.com/ros2/rcl_logging/issues/47>`_)
-* Added Doxyfile and fixed related warnings (`#42 <https://github.com/ros2/rcl_logging/issues/42>`_) (`#46 <https://github.com/ros2/rcl_logging/issues/46>`_)
+* Update QD to QL 1 (`#66 <https://github.com/ros2/rcl_logging/issues/66>`_)
+* Make sure to check return value from external_initialize. (`#65 <https://github.com/ros2/rcl_logging/issues/65>`_)
+* updated QD section 3.i and 3ii and spelling error (`#63 <https://github.com/ros2/rcl_logging/issues/63>`_)
+* rcl_logging_spdlog: Increased QL to 2 in QD
+* Updated spdlog QL in QD
+* Make internal dependencies private (`#60 <https://github.com/ros2/rcl_logging/issues/60>`_)
+* [rcl_logging_spdlog] Add warnings (`#54 <https://github.com/ros2/rcl_logging/issues/54>`_)
+* Allow configuring logging directory through environment variables (`#53 <https://github.com/ros2/rcl_logging/issues/53>`_)
+* Update the maintainers. (`#55 <https://github.com/ros2/rcl_logging/issues/55>`_)
+* Added benchmark test to rcl_logging_spdlog (`#52 <https://github.com/ros2/rcl_logging/issues/52>`_)
+* Used current_path() function from rcpputils (`#51 <https://github.com/ros2/rcl_logging/issues/51>`_)
+* Add fault injection unittest to increase coverage (`#49 <https://github.com/ros2/rcl_logging/issues/49>`_)
+* Contributors: Alejandro Hernández Cordero, Audrow Nash, Chris Lalancette, Christophe Bedard, Shane Loretz, Stephen Brawner, ahcorde, brawner
+
+2.0.1 (2020-07-21)
+------------------
+* Bump QD to level 3 and updated QD (`#44 <https://github.com/ros2/rcl_logging/issues/44>`_)
+* Added Doxyfile and fixed related warnings (`#42 <https://github.com/ros2/rcl_logging/issues/42>`_)
+* Contributors: Alejandro Hernández Cordero
+
+2.0.0 (2020-06-18)
+------------------
+* Use new package with rcl logging interface (`#41 <https://github.com/ros2/rcl_logging/issues/41>`_)
+* Increased test coverage (`#40 <https://github.com/ros2/rcl_logging/issues/40>`_)
 * Add Security Vulnerability Policy pointing to REP-2006.
 * Rename Quality_Declaration.md -> QUALITY_DECLARATION.md
-* Contributors: Chris Lalancette, Jacob Perron, Jose Luis Rivero
+* Contributors: Chris Lalancette, Scott K Logan
 
 1.0.0 (2020-05-26)
 ------------------
