@@ -2,27 +2,13 @@
 Changelog for package rcl_logging_log4cxx
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-2.1.2 (2021-04-06)
+1.1.0 (2021-04-14)
 ------------------
 
-2.1.1 (2021-01-25)
+1.0.1 (2020-07-21)
 ------------------
-
-2.1.0 (2020-12-08)
-------------------
-* Allow configuring logging directory through environment variables (`#53 <https://github.com/ros2/rcl_logging/issues/53>`_)
-* Update the maintainers. (`#55 <https://github.com/ros2/rcl_logging/issues/55>`_)
-* Contributors: Chris Lalancette, Christophe Bedard
-
-2.0.1 (2020-07-21)
-------------------
-* Remove unused pytest dependency. (`#43 <https://github.com/ros2/rcl_logging/issues/43>`_)
-* Contributors: Chris Lalancette
-
-2.0.0 (2020-06-18)
-------------------
-* Use new package with rcl logging interface (`#41 <https://github.com/ros2/rcl_logging/issues/41>`_)
-* Contributors: Chris Lalancette
+* Include rcutils/allocator.h in logging_interface.h (`#47 <https://github.com/ros2/rcl_logging/issues/47>`_)
+* Contributors: Jose Luis Rivero
 
 1.0.0 (2020-05-26)
 ------------------

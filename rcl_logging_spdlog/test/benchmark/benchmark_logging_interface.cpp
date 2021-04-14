@@ -16,11 +16,14 @@
 #include <rcutils/allocator.h>
 #include <rcutils/logging.h>
 
-#include <rcl_logging_interface/rcl_logging_interface.h>
+#include <rcl_logging_spdlog/logging_interface.h>
 
 #include <string>
 
 #include "performance_test_fixture/performance_test_fixture.hpp"
+
+#define RCL_LOGGING_RET_OK    (0)
+#define RCL_LOGGING_RET_ERROR (2)
 
 using performance_test_fixture::PerformanceTest;
 
@@ -88,9 +91,6 @@ BENCHMARK_F(PerformanceTest, logging_reinitialize)(benchmark::State & st)
 {
   rcutils_allocator_t allocator = rcutils_get_default_allocator();
   rcl_logging_ret_t ret = rcl_logging_external_initialize(nullptr, allocator);
-  if (ret != RCL_LOGGING_RET_OK) {
-    st.SkipWithError(rcutils_get_error_string().str);
-  }
 
   reset_heap_counters();
 

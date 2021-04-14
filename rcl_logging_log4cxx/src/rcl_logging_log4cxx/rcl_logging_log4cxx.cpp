@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-#include <rcl_logging_interface/rcl_logging_interface.h>
-
 #include <rcutils/allocator.h>
 #include <rcutils/get_env.h>
 #include <rcutils/logging.h>
@@ -64,6 +62,17 @@ static const log4cxx::LevelPtr map_external_log_level_to_library_level(int exter
   return level;
 }
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+#include "rcl_logging_log4cxx/logging_interface.h"
+
+#define RCL_LOGGING_RET_OK                          (0)
+#define RCL_LOGGING_RET_ERROR                       (2)
+#define RCL_LOGGING_RET_CONFIG_FILE_DOESNT_EXIST    (21)
+#define RCL_LOGGING_RET_CONFIG_FILE_INVALID         (22)
+
 rcl_logging_ret_t rcl_logging_external_initialize(
   const char * config_file,
   rcutils_allocator_t allocator)
@@ -102,20 +111,19 @@ rcl_logging_ret_t rcl_logging_external_initialize(
     // To be compatible with ROS 1, we want to construct a default filename of
     // the form ~/.ros/log/<exe>_<pid>_<milliseconds-since-epoch>.log
 
-    char * logdir = nullptr;
-    rcl_logging_ret_t dir_ret = rcl_logging_get_logging_directory(allocator, &logdir);
-    if (RCL_LOGGING_RET_OK != dir_ret) {
-      // We couldn't get the log directory, so get out of here without setting up
-      // logging.
-      RCUTILS_SET_ERROR_MSG("Failed to get logging directory");
-      return dir_ret;
+    // First get the home directory.
+    const char * homedir = rcutils_get_home_dir();
+    if (homedir == nullptr) {
+      // We couldn't get the home directory; it is not really going to be
+      // possible to do logging properly, so get out of here without setting
+      // up logging.
+      return RCL_LOGGING_RET_ERROR;
     }
 
     // Now get the milliseconds since the epoch in the local timezone.
     rcutils_time_point_value_t now;
     rcutils_ret_t ret = rcutils_system_time_now(&now);
     if (ret != RCUTILS_RET_OK) {
-      allocator.deallocate(logdir, allocator.state);
       // We couldn't get the system time, so get out of here without setting up
       // logging.
       return RCL_LOGGING_RET_ERROR;
@@ -125,7 +133,6 @@ rcl_logging_ret_t rcl_logging_external_initialize(
     // Get the program name.
     char * executable_name = rcutils_get_executable_name(allocator);
     if (executable_name == nullptr) {
-      allocator.deallocate(logdir, allocator.state);
       // We couldn't get the program name, so get out of here without setting up
       // logging.
       return RCL_LOGGING_RET_ERROR;
@@ -134,9 +141,8 @@ rcl_logging_ret_t rcl_logging_external_initialize(
     char log_name_buffer[512] = {0};
     int print_ret = rcutils_snprintf(
       log_name_buffer, sizeof(log_name_buffer),
-      "%s/%s_%i_%" PRId64 ".log", logdir, executable_name,
+      "%s/.ros/log/%s_%i_%" PRId64 ".log", homedir, executable_name,
       rcutils_get_pid(), ms_since_epoch);
-    allocator.deallocate(logdir, allocator.state);
     allocator.deallocate(executable_name, allocator.state);
     if (print_ret < 0) {
       RCUTILS_SET_ERROR_MSG("Failed to create log file name string");
@@ -171,3 +177,7 @@ rcl_logging_ret_t rcl_logging_external_set_logger_level(const char * name, int l
   logger->setLevel(map_external_log_level_to_library_level(level));
   return RCL_LOGGING_RET_OK;
 }
+
+#ifdef __cplusplus
+} /* extern "C" */
+#endif

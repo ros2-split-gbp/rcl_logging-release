@@ -12,36 +12,37 @@ if(NOT CMAKE_CXX_STANDARD)
 endif()
 
 find_package(ament_cmake_ros REQUIRED)
-find_package(rcl_logging_interface REQUIRED)
-find_package(rcpputils REQUIRED)
 find_package(rcutils REQUIRED)
-find_package(spdlog_vendor REQUIRED) # Provides spdlog on platforms without it.
+find_package(spdlog_vendor REQUIRED) # Provides spdlog 1.3.1 on platforms without it.
 find_package(spdlog REQUIRED)
+find_package(rcpputils REQUIRED)
 
 if(NOT WIN32)
   add_compile_options(-Wall -Wextra -Wpedantic)
 endif()
-if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-  add_compile_options(
-    -Wformat=2 -Wconversion -Woverloaded-virtual -Wshadow
-    -Wnon-virtual-dtor -Wold-style-cast -Wcast-qual
-  )
-endif()
 
 add_library(${PROJECT_NAME} src/rcl_logging_spdlog.cpp)
-target_link_libraries(${PROJECT_NAME} PRIVATE
-  rcpputils::rcpputils
-  rcutils::rcutils
-  spdlog::spdlog)
-target_link_libraries(${PROJECT_NAME} PUBLIC
-  rcl_logging_interface::rcl_logging_interface)
+target_include_directories(${PROJECT_NAME} PUBLIC
+  "$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>"
+  "$<INSTALL_INTERFACE:include>")
+target_link_libraries(${PROJECT_NAME} spdlog::spdlog)
 
-target_compile_definitions(${PROJECT_NAME} PRIVATE "RCL_LOGGING_INTERFACE_BUILDING_DLL")
+ament_target_dependencies(${PROJECT_NAME}
+  rcutils
+  spdlog
+  rcpputils
+)
+
+target_compile_definitions(${PROJECT_NAME} PRIVATE "RCL_LOGGING_BUILDING_DLL")
 
 install(TARGETS ${PROJECT_NAME} EXPORT ${PROJECT_NAME}
   ARCHIVE DESTINATION lib
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION bin)
+
+install(DIRECTORY include/${PROJECT_NAME}/
+  DESTINATION include/${PROJECT_NAME}
+)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
@@ -53,6 +54,7 @@ if(BUILD_TESTING)
     performance_test_fixture::performance_test_fixture INTERFACE_INCLUDE_DIRECTORIES)
 
   find_package(ament_cmake_gtest REQUIRED)
+  find_package(rcpputils REQUIRED)
   ament_add_gtest(test_logging_interface test/test_logging_interface.cpp)
   if(TARGET test_logging_interface)
     target_link_libraries(test_logging_interface ${PROJECT_NAME})
@@ -65,8 +67,8 @@ if(BUILD_TESTING)
   endif()
 endif()
 
-# Export rcl_logging_interface to give downstream packages access to it's headers
-ament_export_dependencies(rcl_logging_interface)
+ament_export_include_directories(include)
+ament_export_dependencies(ament_cmake rcutils spdlog_vendor spdlog)
 ament_export_libraries(${PROJECT_NAME})
 ament_export_targets(${PROJECT_NAME})
 ament_package()

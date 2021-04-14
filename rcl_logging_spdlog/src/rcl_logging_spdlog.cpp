@@ -14,23 +14,32 @@
 
 #include <rcpputils/filesystem_helper.hpp>
 #include <rcutils/allocator.h>
+#include <rcutils/filesystem.h>
 #include <rcutils/get_env.h>
 #include <rcutils/logging.h>
 #include <rcutils/process.h>
 #include <rcutils/snprintf.h>
 #include <rcutils/time.h>
+#include <rcutils/strdup.h>
+#include <rcutils/format_string.h>
 
 #include <cerrno>
 #include <cinttypes>
 #include <memory>
 #include <mutex>
-#include <string>
 #include <utility>
 
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/basic_file_sink.h"
 
-#include "rcl_logging_interface/rcl_logging_interface.h"
+#include "rcl_logging_spdlog/logging_interface.h"
+
+#define RCL_LOGGING_RET_OK    (0)
+#define RCL_LOGGING_RET_ERROR (2)
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 static std::mutex g_logger_mutex;
 static std::unique_ptr<spdlog::logger> g_root_logger = nullptr;
@@ -82,7 +91,7 @@ rcl_logging_ret_t rcl_logging_external_initialize(
       // We couldn't get the log directory, so get out of here without setting up
       // logging.
       RCUTILS_SET_ERROR_MSG("Failed to get logging directory");
-      return dir_ret;
+      return RCL_LOGGING_RET_ERROR;
     }
 
     // SPDLOG doesn't automatically create the log directories, so create them
@@ -97,7 +106,6 @@ rcl_logging_ret_t rcl_logging_external_initialize(
     rcutils_time_point_value_t now;
     rcutils_ret_t ret = rcutils_system_time_now(&now);
     if (ret != RCUTILS_RET_OK) {
-      allocator.deallocate(logdir, allocator.state);
       // We couldn't get the system time, so get out of here without setting up
       // logging.  We don't need to call RCUTILS_SET_ERROR_MSG either since
       // rcutils_system_time_now() already did it.
@@ -108,7 +116,6 @@ rcl_logging_ret_t rcl_logging_external_initialize(
     // Get the program name.
     char * basec = rcutils_get_executable_name(allocator);
     if (basec == nullptr) {
-      allocator.deallocate(logdir, allocator.state);
       // We couldn't get the program name, so get out of here without setting up
       // logging.
       RCUTILS_SET_ERROR_MSG("Failed to get the executable name");
@@ -156,3 +163,102 @@ rcl_logging_ret_t rcl_logging_external_set_logger_level(const char * name, int l
 
   return RCL_LOGGING_RET_OK;
 }
+
+
+static char *
+rcl_expand_user(const char * path, rcutils_allocator_t allocator)
+{
+  if (NULL == path) {
+    return NULL;
+  }
+
+  if ('~' != path[0]) {
+    return rcutils_strdup(path, allocator);
+  }
+
+  const char * homedir = rcutils_get_home_dir();
+  if (NULL == homedir) {
+    return NULL;
+  }
+  return rcutils_format_string_limit(
+    allocator,
+    strlen(homedir) + strlen(path),
+    "%s%s",
+    homedir,
+    path + 1);
+}
+
+rcl_logging_ret_t
+rcl_logging_get_logging_directory(rcutils_allocator_t allocator, char ** directory)
+{
+  if (NULL == directory) {
+    RCUTILS_SET_ERROR_MSG("directory argument must not be null");
+    return RCL_LOGGING_RET_ERROR;
+  }
+  if (NULL != *directory) {
+    RCUTILS_SET_ERROR_MSG("directory argument must point to null");
+    return RCL_LOGGING_RET_ERROR;
+  }
+
+  const char * log_dir_env;
+  const char * err = rcutils_get_env("ROS_LOG_DIR", &log_dir_env);
+  if (NULL != err) {
+    RCUTILS_SET_ERROR_MSG("rcutils_get_env failed");
+    return RCL_LOGGING_RET_ERROR;
+  }
+  if ('\0' != *log_dir_env) {
+    *directory = rcutils_strdup(log_dir_env, allocator);
+    if (NULL == *directory) {
+      RCUTILS_SET_ERROR_MSG("rcutils_strdup failed");
+      return RCL_LOGGING_RET_ERROR;
+    }
+  } else {
+    const char * ros_home_dir_env;
+    err = rcutils_get_env("ROS_HOME", &ros_home_dir_env);
+    if (NULL != err) {
+      RCUTILS_SET_ERROR_MSG("rcutils_get_env failed");
+      return RCL_LOGGING_RET_ERROR;
+    }
+    char * ros_home_dir;
+    if ('\0' == *ros_home_dir_env) {
+      ros_home_dir = rcutils_join_path("~", ".ros", allocator);
+      if (NULL == ros_home_dir) {
+        RCUTILS_SET_ERROR_MSG("rcutils_join_path failed");
+        return RCL_LOGGING_RET_ERROR;
+      }
+    } else {
+      ros_home_dir = rcutils_strdup(ros_home_dir_env, allocator);
+      if (NULL == ros_home_dir) {
+        RCUTILS_SET_ERROR_MSG("rcutils_strdup failed");
+        return RCL_LOGGING_RET_ERROR;
+      }
+    }
+    *directory = rcutils_join_path(ros_home_dir, "log", allocator);
+    allocator.deallocate(ros_home_dir, allocator.state);
+    if (NULL == *directory) {
+      RCUTILS_SET_ERROR_MSG("rcutils_join_path failed");
+      return RCL_LOGGING_RET_ERROR;
+    }
+  }
+
+  char * directory_maybe_not_expanded = *directory;
+  *directory = rcl_expand_user(directory_maybe_not_expanded, allocator);
+  allocator.deallocate(directory_maybe_not_expanded, allocator.state);
+  if (NULL == *directory) {
+    RCUTILS_SET_ERROR_MSG("rcutils_expand_user failed");
+    return RCL_LOGGING_RET_ERROR;
+  }
+
+  char * directory_maybe_not_native = *directory;
+  *directory = rcutils_to_native_path(directory_maybe_not_native, allocator);
+  allocator.deallocate(directory_maybe_not_native, allocator.state);
+  if (NULL == *directory) {
+    RCUTILS_SET_ERROR_MSG("rcutils_to_native_path failed");
+    return RCL_LOGGING_RET_ERROR;
+  }
+  return RCL_LOGGING_RET_OK;
+}
+
+#ifdef __cplusplus
+} /* extern "C" */
+#endif
