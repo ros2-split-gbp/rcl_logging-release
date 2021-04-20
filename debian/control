@@ -1,0 +1,12 @@
+Source: ros-galactic-rcl-logging-noop
+Section: misc
+Priority: optional
+Maintainer: Chris Lalancette <clalancette@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), python3-empy, ros-galactic-ament-cmake-gmock, ros-galactic-ament-cmake-gtest, ros-galactic-ament-cmake-ros, ros-galactic-ament-lint-auto, ros-galactic-ament-lint-common, ros-galactic-launch-testing, ros-galactic-rcl-logging-interface, ros-galactic-rcutils, ros-galactic-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-galactic-rcl-logging-noop
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-galactic-rcl-logging-interface, ros-galactic-rcutils, ros-galactic-ros-workspace
+Description: An rcl logger implementation that doesn't do anything with log messages.
