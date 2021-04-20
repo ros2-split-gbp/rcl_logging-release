@@ -1,1 +1,1 @@
-{"base": "0172d29", "parent": "rpm/rolling/rcl_logging_log4cxx", "previous": "91765da", "trim": "", "trimbase": ""}
+{"base": "1b38524", "parent": "rpm/galactic/rcl_logging_log4cxx", "previous": "f219a08", "trim": "", "trimbase": ""}
