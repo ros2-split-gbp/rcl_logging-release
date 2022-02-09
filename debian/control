@@ -1,0 +1,12 @@
+Source: ros-rolling-rcl-logging-noop
+Section: misc
+Priority: optional
+Maintainer: Chris Lalancette <clalancette@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), python3-empy, ros-rolling-ament-cmake-gmock, ros-rolling-ament-cmake-gtest, ros-rolling-ament-cmake-ros, ros-rolling-ament-lint-auto, ros-rolling-ament-lint-common, ros-rolling-launch-testing, ros-rolling-rcl-logging-interface, ros-rolling-rcutils, ros-rolling-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-rolling-rcl-logging-noop
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-rolling-rcl-logging-interface, ros-rolling-rcutils, ros-rolling-ros-workspace
+Description: An rcl logger implementation that doesn't do anything with log messages.
