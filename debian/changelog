@@ -1,0 +1,146 @@
+ros-humble-rcl-logging-spdlog (2.3.0-2jammy) jammy; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Tue, 01 Mar 2022 08:00:00 -0000
+
+ros-humble-rcl-logging-spdlog (2.2.1-2jammy) jammy; urgency=high
+
+  * Fix include order for cpplint (#84 <https://github.com/ros2/rcl_logging/issues/84>)
+    Relates to https://github.com/ament/ament_lint/pull/324
+  * Update maintainers to Chris Lalancette (#83 <https://github.com/ros2/rcl_logging/issues/83>)
+  * Contributors: Audrow Nash, Jacob Perron
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Fri, 14 Jan 2022 08:00:00 -0000
+
+ros-humble-rcl-logging-spdlog (2.2.0-2jammy) jammy; urgency=high
+
+  * Fix renamed rcpputils header (#81 <https://github.com/ros2/rcl_logging/issues/81>)
+  * Contributors: Abrar Rahman Protyasha
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Thu, 18 Nov 2021 08:00:00 -0000
+
+ros-humble-rcl-logging-spdlog (2.1.3-2jammy) jammy; urgency=high
+
+  * Update includes after rcutils/get_env.h deprecation (#75 <https://github.com/ros2/rcl_logging/issues/75>)
+  * Contributors: Christophe Bedard
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Thu, 16 Sep 2021 07:00:00 -0000
+
+ros-humble-rcl-logging-spdlog (2.1.2-2jammy) jammy; urgency=high
+
+  * updating quality declaration links (re: ros2/docs.ros2.org#52 <https://github.com/ros2/docs.ros2.org/issues/52>) (#73 <https://github.com/ros2/rcl_logging/issues/73>)
+  * Contributors: shonigmann
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Tue, 06 Apr 2021 07:00:00 -0000
+
+ros-humble-rcl-logging-spdlog (2.1.1-2jammy) jammy; urgency=high
+
+  * Include what you use (#71 <https://github.com/ros2/rcl_logging/issues/71>)
+  * Contributors: Ivan Santiago Paunovic
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Mon, 25 Jan 2021 08:00:00 -0000
+
+ros-humble-rcl-logging-spdlog (2.1.0-2jammy) jammy; urgency=high
+
+  * Update QD to QL 1 (#66 <https://github.com/ros2/rcl_logging/issues/66>)
+  * Make sure to check return value from external_initialize. (#65 <https://github.com/ros2/rcl_logging/issues/65>)
+  * updated QD section 3.i and 3ii and spelling error (#63 <https://github.com/ros2/rcl_logging/issues/63>)
+  * rcl_logging_spdlog: Increased QL to 2 in QD
+  * Updated spdlog QL in QD
+  * Make internal dependencies private (#60 <https://github.com/ros2/rcl_logging/issues/60>)
+  * [rcl_logging_spdlog] Add warnings (#54 <https://github.com/ros2/rcl_logging/issues/54>)
+  * Allow configuring logging directory through environment variables (#53 <https://github.com/ros2/rcl_logging/issues/53>)
+  * Update the maintainers. (#55 <https://github.com/ros2/rcl_logging/issues/55>)
+  * Added benchmark test to rcl_logging_spdlog (#52 <https://github.com/ros2/rcl_logging/issues/52>)
+  * Used current_path() function from rcpputils (#51 <https://github.com/ros2/rcl_logging/issues/51>)
+  * Add fault injection unittest to increase coverage (#49 <https://github.com/ros2/rcl_logging/issues/49>)
+  * Contributors: Alejandro Hernández Cordero, Audrow Nash, Chris Lalancette, Christophe Bedard, Shane Loretz, Stephen Brawner, ahcorde, brawner
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Tue, 08 Dec 2020 08:00:00 -0000
+
+ros-humble-rcl-logging-spdlog (2.0.1-2jammy) jammy; urgency=high
+
+  * Bump QD to level 3 and updated QD (#44 <https://github.com/ros2/rcl_logging/issues/44>)
+  * Added Doxyfile and fixed related warnings (#42 <https://github.com/ros2/rcl_logging/issues/42>)
+  * Contributors: Alejandro Hernández Cordero
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Tue, 21 Jul 2020 07:00:00 -0000
+
+ros-humble-rcl-logging-spdlog (2.0.0-2jammy) jammy; urgency=high
+
+  * Use new package with rcl logging interface (#41 <https://github.com/ros2/rcl_logging/issues/41>)
+  * Increased test coverage (#40 <https://github.com/ros2/rcl_logging/issues/40>)
+  * Add Security Vulnerability Policy pointing to REP-2006.
+  * Rename Quality_Declaration.md -> QUALITY_DECLARATION.md
+  * Contributors: Chris Lalancette, Scott K Logan
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Thu, 18 Jun 2020 07:00:00 -0000
+
+ros-humble-rcl-logging-spdlog (1.0.0-2jammy) jammy; urgency=high
+
+  * Add some preliminary functional tests (#36 <https://github.com/ros2/rcl_logging/issues/36>)
+  * warn about unused return value for set_logger_level (#38 <https://github.com/ros2/rcl_logging/issues/38>)
+  * Added features to rcl_logging_spdlog (#35 <https://github.com/ros2/rcl_logging/issues/35>)
+  * Added public API documentation for log4cxx and spdlog (#32 <https://github.com/ros2/rcl_logging/issues/32>)
+  * Current state Quality Declaration, Contributing and Readme files (#29 <https://github.com/ros2/rcl_logging/issues/29>)
+  * Contributors: Alejandro Hernández Cordero, Dirk Thomas, Jorge Perez, Scott K Logan
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Tue, 26 May 2020 07:00:00 -0000
+
+ros-humble-rcl-logging-spdlog (0.4.0-2jammy) jammy; urgency=high
+
+  * Export targets in addition to include directories / libraries (#31 <https://github.com/ros2/rcl_logging/issues/31>)
+  * Make spdlog an exec_depend (#27 <https://github.com/ros2/rcl_logging/issues/27>)
+  * Code style only: wrap after open parenthesis if not in one line (#24 <https://github.com/ros2/rcl_logging/issues/24>)
+  * Bypass spdlog singleton registry (#23 <https://github.com/ros2/rcl_logging/issues/23>)
+  * Contributors: Chris Lalancette, Dirk Thomas, Ivan Santiago Paunovic
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Fri, 24 Apr 2020 07:00:00 -0000
+
+ros-humble-rcl-logging-spdlog (0.3.3-2jammy) jammy; urgency=high
+
+  * Fix Clang warning about possible uninitialized variable (#21 <https://github.com/ros2/rcl_logging/issues/21>)
+  * Contributors: Jacob Perron
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Wed, 23 Oct 2019 07:00:00 -0000
+
+ros-humble-rcl-logging-spdlog (0.3.2-2jammy) jammy; urgency=high
+
+  * spdlog is a header-only library, so the exported dep isn't needed. (#19 <https://github.com/ros2/rcl_logging/issues/19>)
+  * Contributors: Chris Lalancette
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Mon, 07 Oct 2019 07:00:00 -0000
+
+ros-humble-rcl-logging-spdlog (0.3.1-2jammy) jammy; urgency=high
+
+  * Implement a backend logger using spdlog. (#17 <https://github.com/ros2/rcl_logging/issues/17>)
+  * Contributors: Chris Lalancette
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Thu, 03 Oct 2019 07:00:00 -0000
+
+ros-humble-rcl-logging-spdlog (0.3.0-2jammy) jammy; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Thu, 26 Sep 2019 07:00:00 -0000
+
+ros-humble-rcl-logging-spdlog (0.2.1-2jammy) jammy; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Wed, 08 May 2019 07:00:00 -0000
+
+ros-humble-rcl-logging-spdlog (0.2.0-2jammy) jammy; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Sat, 09 Mar 2019 08:00:00 -0000
+
+ros-humble-rcl-logging-spdlog (0.1.0-2jammy) jammy; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Fri, 07 Dec 2018 08:00:00 -0000
+
+
