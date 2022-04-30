@@ -2,8 +2,31 @@
 Changelog for package rcl_logging_interface
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-2.1.4 (2022-04-28)
+2.4.0 (2022-04-29)
 ------------------
+
+2.3.0 (2022-03-01)
+------------------
+* Install includes to include/${PROJECT_NAME} (`#85 <https://github.com/ros2/rcl_logging/issues/85>`_)
+* Contributors: Shane Loretz
+
+2.2.1 (2022-01-14)
+------------------
+* Fix include order for cpplint (`#84 <https://github.com/ros2/rcl_logging/issues/84>`_)
+  Relates to https://github.com/ament/ament_lint/pull/324
+* Update maintainers to Chris Lalancette (`#83 <https://github.com/ros2/rcl_logging/issues/83>`_)
+* Contributors: Audrow Nash, Jacob Perron
+
+2.2.0 (2021-11-18)
+------------------
+* Fix renamed `rcpputils` header (`#81 <https://github.com/ros2/rcl_logging/issues/81>`_)
+* Contributors: Abrar Rahman Protyasha
+
+2.1.3 (2021-09-16)
+------------------
+* Add Doxyfile to rcl_logging_interface package (`#80 <https://github.com/ros2/rcl_logging/issues/80>`_)
+* Update includes after rcutils/get_env.h deprecation (`#75 <https://github.com/ros2/rcl_logging/issues/75>`_)
+* Contributors: Christophe Bedard, Michel Hidalgo
 
 2.1.2 (2021-04-06)
 ------------------
