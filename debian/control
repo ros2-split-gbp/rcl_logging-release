@@ -1,0 +1,12 @@
+Source: ros-humble-rcl-logging-noop
+Section: misc
+Priority: optional
+Maintainer: Chris Lalancette <clalancette@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), python3-empy, ros-humble-ament-cmake-gmock <!nocheck>, ros-humble-ament-cmake-gtest <!nocheck>, ros-humble-ament-cmake-ros, ros-humble-ament-lint-auto <!nocheck>, ros-humble-ament-lint-common <!nocheck>, ros-humble-launch-testing <!nocheck>, ros-humble-rcl-logging-interface, ros-humble-rcutils, ros-humble-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-humble-rcl-logging-noop
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-humble-rcl-logging-interface, ros-humble-rcutils, ros-humble-ros-workspace
+Description: An rcl logger implementation that doesn't do anything with log messages.
