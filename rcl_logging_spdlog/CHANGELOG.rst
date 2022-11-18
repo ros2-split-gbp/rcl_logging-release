@@ -2,10 +2,26 @@
 Changelog for package rcl_logging_spdlog
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-2.3.1 (2022-11-07)
+2.4.3 (2022-11-18)
 ------------------
-* ament_export_dependencies any package with targets we linked against (`#89 <https://github.com/ros2/rcl_logging/issues/89>`_) (`#90 <https://github.com/ros2/rcl_logging/issues/90>`_)
-* Contributors: mergify[bot]
+* change flushing behavior for spdlog log files, and add env var to use old style (no explicit flushing) (`#95 <https://github.com/ros2/rcl_logging/issues/95>`_)
+  * now flushes every ERROR message and periodically every 5 seconds
+  * can set ``RCL_LOGGING_SPDLOG_EXPERIMENTAL_OLD_FLUSHING_BEHAVIOR=1`` to get old behavior
+* Updated maintainers - 2022-11-07 (`#96 <https://github.com/ros2/rcl_logging/issues/96>`_)
+* Contributors: Audrow Nash, William Woodall
+
+2.4.2 (2022-11-02)
+------------------
+* Disable cppcheck for rcl_logging_spdlog. (`#93 <https://github.com/ros2/rcl_logging/issues/93>`_)
+* Contributors: Chris Lalancette
+
+2.4.1 (2022-09-13)
+------------------
+* ament_export_dependencies any package with targets we linked against (`#89 <https://github.com/ros2/rcl_logging/issues/89>`_)
+* Contributors: Shane Loretz
+
+2.4.0 (2022-04-29)
+------------------
 
 2.3.0 (2022-03-01)
 ------------------
