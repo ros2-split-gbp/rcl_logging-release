@@ -1,0 +1,12 @@
+Source: ros-galactic-rcl-logging-log4cxx
+Section: misc
+Priority: optional
+Maintainer: Chris Lalancette <clalancette@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), liblog4cxx-dev, python3-empy, ros-galactic-ament-cmake-gmock <!nocheck>, ros-galactic-ament-cmake-gtest <!nocheck>, ros-galactic-ament-cmake-ros, ros-galactic-ament-lint-auto <!nocheck>, ros-galactic-ament-lint-common <!nocheck>, ros-galactic-launch-testing <!nocheck>, ros-galactic-rcl-logging-interface, ros-galactic-rcutils, ros-galactic-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-galactic-rcl-logging-log4cxx
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, liblog4cxx-dev, ros-galactic-rcl-logging-interface, ros-galactic-rcutils, ros-galactic-ros-workspace
+Description: C API providing common interface to a shared library wrapping 3rd party loggers.
