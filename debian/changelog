@@ -1,0 +1,48 @@
+ros-galactic-rcl-logging-interface (2.1.5-1focal) focal; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Fri, 02 Dec 2022 08:00:00 -0000
+
+ros-galactic-rcl-logging-interface (2.1.4-1focal) focal; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Thu, 28 Apr 2022 07:00:00 -0000
+
+ros-galactic-rcl-logging-interface (2.1.2-1focal) focal; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Tue, 06 Apr 2021 07:00:00 -0000
+
+ros-galactic-rcl-logging-interface (2.1.1-1focal) focal; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Mon, 25 Jan 2021 08:00:00 -0000
+
+ros-galactic-rcl-logging-interface (2.1.0-1focal) focal; urgency=high
+
+  * Update QD to QL 1 (#66 <https://github.com/ros2/rcl_logging/issues/66>)
+  * Use rcutils_expand_user in rcl_logging_get_logging_directory (#59 <https://github.com/ros2/rcl_logging/issues/59>)
+  * Allow configuring logging directory through environment variables (#53 <https://github.com/ros2/rcl_logging/issues/53>)
+  * Update the maintainers. (#55 <https://github.com/ros2/rcl_logging/issues/55>)
+  * Contributors: Chris Lalancette, Christophe Bedard, Stephen Brawner
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Tue, 08 Dec 2020 08:00:00 -0000
+
+ros-galactic-rcl-logging-interface (2.0.1-1focal) focal; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Tue, 21 Jul 2020 07:00:00 -0000
+
+ros-galactic-rcl-logging-interface (2.0.0-1focal) focal; urgency=high
+
+  * Add new package with rcl logging interface (#41 <https://github.com/ros2/rcl_logging/issues/41>)
+  * Contributors: Chris Lalancette
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Thu, 18 Jun 2020 07:00:00 -0000
+
+
