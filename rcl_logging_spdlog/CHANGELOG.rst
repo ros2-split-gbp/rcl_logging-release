@@ -2,46 +2,13 @@
 Changelog for package rcl_logging_spdlog
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-2.4.3 (2022-11-18)
+2.1.5 (2022-12-02)
 ------------------
-* change flushing behavior for spdlog log files, and add env var to use old style (no explicit flushing) (`#95 <https://github.com/ros2/rcl_logging/issues/95>`_)
-  * now flushes every ERROR message and periodically every 5 seconds
-  * can set ``RCL_LOGGING_SPDLOG_EXPERIMENTAL_OLD_FLUSHING_BEHAVIOR=1`` to get old behavior
-* Updated maintainers - 2022-11-07 (`#96 <https://github.com/ros2/rcl_logging/issues/96>`_)
-* Contributors: Audrow Nash, William Woodall
-
-2.4.2 (2022-11-02)
-------------------
-* Disable cppcheck for rcl_logging_spdlog. (`#93 <https://github.com/ros2/rcl_logging/issues/93>`_)
-* Contributors: Chris Lalancette
-
-2.4.1 (2022-09-13)
-------------------
-* ament_export_dependencies any package with targets we linked against (`#89 <https://github.com/ros2/rcl_logging/issues/89>`_)
+* ament_export_dependencies any package with targets we linked against (`#91 <https://github.com/ros2/rcl_logging/issues/91>`_)
 * Contributors: Shane Loretz
 
-2.4.0 (2022-04-29)
+2.1.4 (2022-04-28)
 ------------------
-
-2.3.0 (2022-03-01)
-------------------
-
-2.2.1 (2022-01-14)
-------------------
-* Fix include order for cpplint (`#84 <https://github.com/ros2/rcl_logging/issues/84>`_)
-  Relates to https://github.com/ament/ament_lint/pull/324
-* Update maintainers to Chris Lalancette (`#83 <https://github.com/ros2/rcl_logging/issues/83>`_)
-* Contributors: Audrow Nash, Jacob Perron
-
-2.2.0 (2021-11-18)
-------------------
-* Fix renamed `rcpputils` header (`#81 <https://github.com/ros2/rcl_logging/issues/81>`_)
-* Contributors: Abrar Rahman Protyasha
-
-2.1.3 (2021-09-16)
-------------------
-* Update includes after rcutils/get_env.h deprecation (`#75 <https://github.com/ros2/rcl_logging/issues/75>`_)
-* Contributors: Christophe Bedard
 
 2.1.2 (2021-04-06)
 ------------------

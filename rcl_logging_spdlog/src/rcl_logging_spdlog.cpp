@@ -12,21 +12,20 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+#include <rcpputils/filesystem_helper.hpp>
+#include <rcutils/allocator.h>
+#include <rcutils/get_env.h>
+#include <rcutils/logging.h>
+#include <rcutils/process.h>
+#include <rcutils/snprintf.h>
+#include <rcutils/time.h>
+
 #include <cerrno>
-#include <chrono>
 #include <cinttypes>
 #include <memory>
 #include <mutex>
 #include <string>
 #include <utility>
-
-#include "rcpputils/filesystem_helper.hpp"
-#include "rcpputils/env.hpp"
-#include "rcutils/allocator.h"
-#include "rcutils/logging.h"
-#include "rcutils/process.h"
-#include "rcutils/snprintf.h"
-#include "rcutils/time.h"
 
 #include "spdlog/spdlog.h"
 #include "spdlog/sinks/basic_file_sink.h"
@@ -34,7 +33,7 @@
 #include "rcl_logging_interface/rcl_logging_interface.h"
 
 static std::mutex g_logger_mutex;
-static std::shared_ptr<spdlog::logger> g_root_logger = nullptr;
+static std::unique_ptr<spdlog::logger> g_root_logger = nullptr;
 
 static spdlog::level::level_enum map_external_log_level_to_library_level(int external_level)
 {
@@ -55,42 +54,6 @@ static spdlog::level::level_enum map_external_log_level_to_library_level(int ext
   return level;
 }
 
-namespace
-{
-
-RCL_LOGGING_INTERFACE_LOCAL
-bool
-get_should_use_old_flushing_behavior()
-{
-  const char * env_var_name = "RCL_LOGGING_SPDLOG_EXPERIMENTAL_OLD_FLUSHING_BEHAVIOR";
-
-  try {
-    std::string env_var_value = rcpputils::get_env_var(env_var_name);
-
-    if (env_var_value.empty()) {
-      // not set
-      return false;
-    }
-    if ("0" == env_var_value) {
-      // explicitly false
-      return false;
-    }
-    if ("1" == env_var_value) {
-      // explicitly true
-      return true;
-    }
-
-    // unknown value
-    throw std::runtime_error("unrecognized value: " + env_var_value);
-  } catch (const std::runtime_error & error) {
-    throw std::runtime_error(
-            std::string("failed to get env var '") + env_var_name + "': " + error.what()
-    );
-  }
-}
-
-}  // namespace
-
 rcl_logging_ret_t rcl_logging_external_initialize(
   const char * config_file,
   rcutils_allocator_t allocator)
@@ -110,16 +73,6 @@ rcl_logging_ret_t rcl_logging_external_initialize(
       "spdlog logging backend doesn't currently support external configuration");
     return RCL_LOGGING_RET_ERROR;
   } else {
-    // check RCL_LOGGING_SPDLOG_EXPERIMENTAL_OLD_FLUSHING_BEHAVIOR to see if we
-    // should change log file flushing behavior
-    bool should_use_old_flushing_behavior = false;
-    try {
-      should_use_old_flushing_behavior = ::get_should_use_old_flushing_behavior();
-    } catch (const std::runtime_error & error) {
-      RCUTILS_SET_ERROR_MSG(error.what());
-      return RCL_LOGGING_RET_ERROR;
-    }
-
     // To be compatible with ROS 1, we construct a default filename of
     // the form ~/.ros/log/<exe>_<pid>_<milliseconds-since-epoch>.log
 
@@ -175,18 +128,7 @@ rcl_logging_ret_t rcl_logging_external_initialize(
     }
 
     auto sink = std::make_unique<spdlog::sinks::basic_file_sink_mt>(name_buffer, false);
-    g_root_logger = std::make_shared<spdlog::logger>("root", std::move(sink));
-    if (!should_use_old_flushing_behavior) {
-      // in this case we should do the new thing (until config files are supported)
-      // which is to configure the logger to flush periodically and on
-      // error level messages
-      spdlog::flush_every(std::chrono::seconds(5));
-      g_root_logger->flush_on(spdlog::level::err);
-    } else {
-      // the old behavior is to not configure the sink at all, so do nothing
-    }
-
-    spdlog::register_logger(g_root_logger);
+    g_root_logger = std::make_unique<spdlog::logger>("root", std::move(sink));
 
     g_root_logger->set_pattern("%v");
   }
@@ -196,7 +138,6 @@ rcl_logging_ret_t rcl_logging_external_initialize(
 
 rcl_logging_ret_t rcl_logging_external_shutdown()
 {
-  spdlog::drop("root");
   g_root_logger = nullptr;
   return RCL_LOGGING_RET_OK;
 }
