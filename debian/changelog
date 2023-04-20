@@ -1,0 +1,160 @@
+ros-iron-rcl-logging-noop (2.5.1-2bullseye) bullseye; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Mon, 10 Apr 2023 16:00:00 -0000
+
+ros-iron-rcl-logging-noop (2.5.0-2bullseye) bullseye; urgency=high
+
+  * Update rcl_logging to C++17. (#98 <https://github.com/ros2/rcl_logging/issues/98>)
+  * Contributors: Chris Lalancette
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Sun, 12 Feb 2023 16:00:00 -0000
+
+ros-iron-rcl-logging-noop (2.4.3-2bullseye) bullseye; urgency=high
+
+  * Updated maintainers - 2022-11-07 (#96 <https://github.com/ros2/rcl_logging/issues/96>)
+  * Contributors: Audrow Nash
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Thu, 17 Nov 2022 16:00:00 -0000
+
+ros-iron-rcl-logging-noop (2.4.2-2bullseye) bullseye; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Tue, 01 Nov 2022 16:00:00 -0000
+
+ros-iron-rcl-logging-noop (2.4.1-2bullseye) bullseye; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Mon, 12 Sep 2022 16:00:00 -0000
+
+ros-iron-rcl-logging-noop (2.4.0-2bullseye) bullseye; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Thu, 28 Apr 2022 16:00:00 -0000
+
+ros-iron-rcl-logging-noop (2.3.0-2bullseye) bullseye; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Mon, 28 Feb 2022 16:00:00 -0000
+
+ros-iron-rcl-logging-noop (2.2.1-2bullseye) bullseye; urgency=high
+
+  * Update maintainers to Chris Lalancette (#83 <https://github.com/ros2/rcl_logging/issues/83>)
+  * Contributors: Audrow Nash
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Thu, 13 Jan 2022 16:00:00 -0000
+
+ros-iron-rcl-logging-noop (2.2.0-2bullseye) bullseye; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Wed, 17 Nov 2021 16:00:00 -0000
+
+ros-iron-rcl-logging-noop (2.1.3-2bullseye) bullseye; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Wed, 15 Sep 2021 16:00:00 -0000
+
+ros-iron-rcl-logging-noop (2.1.2-2bullseye) bullseye; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Mon, 05 Apr 2021 16:00:00 -0000
+
+ros-iron-rcl-logging-noop (2.1.1-2bullseye) bullseye; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Sun, 24 Jan 2021 16:00:00 -0000
+
+ros-iron-rcl-logging-noop (2.1.0-2bullseye) bullseye; urgency=high
+
+  * Make internal dependencies private (#60 <https://github.com/ros2/rcl_logging/issues/60>)
+  * Update the maintainers. (#55 <https://github.com/ros2/rcl_logging/issues/55>)
+  * Contributors: Chris Lalancette, Shane Loretz
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Mon, 07 Dec 2020 16:00:00 -0000
+
+ros-iron-rcl-logging-noop (2.0.1-2bullseye) bullseye; urgency=high
+
+  * Remove unused pytest dependency. (#43 <https://github.com/ros2/rcl_logging/issues/43>)
+  * Contributors: Chris Lalancette
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Mon, 20 Jul 2020 16:00:00 -0000
+
+ros-iron-rcl-logging-noop (2.0.0-2bullseye) bullseye; urgency=high
+
+  * Use new package with rcl logging interface (#41 <https://github.com/ros2/rcl_logging/issues/41>)
+  * Contributors: Chris Lalancette
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Wed, 17 Jun 2020 16:00:00 -0000
+
+ros-iron-rcl-logging-noop (1.0.0-2bullseye) bullseye; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Mon, 25 May 2020 16:00:00 -0000
+
+ros-iron-rcl-logging-noop (0.4.0-2bullseye) bullseye; urgency=high
+
+  * Fix CMake warnings about using uninitialized variables (#30 <https://github.com/ros2/rcl_logging/issues/30>)
+  * Contributors: Dirk Thomas
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Thu, 23 Apr 2020 16:00:00 -0000
+
+ros-iron-rcl-logging-noop (0.3.3-2bullseye) bullseye; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Tue, 22 Oct 2019 16:00:00 -0000
+
+ros-iron-rcl-logging-noop (0.3.2-2bullseye) bullseye; urgency=high
+
+  * Enable linters for noop and log4cxx. (#12 <https://github.com/ros2/rcl_logging/issues/12>)
+  * Contributors: Steven! Ragnarök
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Sun, 06 Oct 2019 16:00:00 -0000
+
+ros-iron-rcl-logging-noop (0.3.1-2bullseye) bullseye; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Wed, 02 Oct 2019 16:00:00 -0000
+
+ros-iron-rcl-logging-noop (0.3.0-2bullseye) bullseye; urgency=high
+
+  * remove unused 'dependencies' CMake variable (#16 <https://github.com/ros2/rcl_logging/issues/16>)
+  * fix package.xml schema violations (#15 <https://github.com/ros2/rcl_logging/issues/15>)
+  * Contributors: Mikael Arguedas
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Wed, 25 Sep 2019 16:00:00 -0000
+
+ros-iron-rcl-logging-noop (0.2.1-2bullseye) bullseye; urgency=high
+
+  * Changing the default location for log files to be a local directory instead of /var/log/ros on linux due to permission issues. (#9 <https://github.com/ros2/rcl_logging/issues/9>)
+  * Prototype to put things in ~/.ros/log
+  * Change the API to add an allocator to logging initialize. (#10 <https://github.com/ros2/rcl_logging/issues/10>)
+  * Contributors: Chris Lalancette, Steven! Ragnarök
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Tue, 07 May 2019 16:00:00 -0000
+
+ros-iron-rcl-logging-noop (0.2.0-2bullseye) bullseye; urgency=high
+
+
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Fri, 08 Mar 2019 16:00:00 -0000
+
+ros-iron-rcl-logging-noop (0.1.0-2bullseye) bullseye; urgency=high
+
+  * First release.
+  * Contributors: Nick Burek, William Woodall
+
+ -- Chris Lalancette <clalancette@openrobotics.org>  Thu, 06 Dec 2018 16:00:00 -0000
+
+

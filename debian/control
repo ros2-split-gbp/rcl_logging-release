@@ -1,0 +1,12 @@
+Source: ros-iron-rcl-logging-noop
+Section: misc
+Priority: optional
+Maintainer: Chris Lalancette <clalancette@openrobotics.org>
+Build-Depends: debhelper (>= 9.0.0), python3-empy, ros-iron-ament-cmake-gmock <!nocheck>, ros-iron-ament-cmake-gtest <!nocheck>, ros-iron-ament-cmake-ros, ros-iron-ament-lint-auto <!nocheck>, ros-iron-ament-lint-common <!nocheck>, ros-iron-launch-testing <!nocheck>, ros-iron-rcl-logging-interface, ros-iron-rcutils, ros-iron-ros-workspace
+Homepage: 
+Standards-Version: 3.9.2
+
+Package: ros-iron-rcl-logging-noop
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-iron-rcl-logging-interface, ros-iron-rcutils, ros-iron-ros-workspace
+Description: An rcl logger implementation that doesn't do anything with log messages.
